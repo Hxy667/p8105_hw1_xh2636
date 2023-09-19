@@ -1,0 +1,72 @@
+---
+title: "p8105_hw1_xh2636"
+author: "Xiaoyu Huang"
+date: "2023-09-19"
+output: html_document
+---
+
+For This HW1
+------------------------------------------------------------
+I download the a package containing the penguins dataset by copy the code: install.packages("moderndive") in the console directly.
+
+Then I use the following code to load the early_january_weather dataset.
+
+
+```{r, echo=FALSE}
+library(moderndive)
+data("early_january_weather")
+```
+
+Variable - describe the dataset:
+------------------------------------------------------------
+
+*   Temp
+*   Dewp
+*   Humid
+*   Wind speed
+*   Wind dir
+*   Hour
+*   Pressure
+*   Precip
+*   Visible
+
+Size of the dataset
+------------------------------------------------------------
+#The number of column of this dataset:
+```{r, echo=FALSE}
+weather_col<-ncol(early_january_weather)
+print(weather_col)
+```
+
+#The number of row of this dataset:
+```{r echo=FALSE}
+weather_row<-nrow(early_january_weather)
+print(weather_row)
+```
+
+# Mean temperature
+```{r, echo=FALSE}
+x <- mean(early_january_weather$temp)
+mean(x)
+```
+
+# Scatterplot of Temp (y) vs Time hour (x)
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+```{r, echo=FALSE}
+scatter_plot <- ggplot(early_january_weather, 
+                       aes(y = temp, x = time_hour, color = humid)) +
+                         geom_point()
+print(scatter_plot)
+```
+
+The pattern of this plot is swinging up and down like a wave. Also the humidity before Jan 07 is lower than the humidity after Jan 07.
+
+```{r, echo=FALSE}
+ggsave("scatter_plot.png")
+```
+
+
+
