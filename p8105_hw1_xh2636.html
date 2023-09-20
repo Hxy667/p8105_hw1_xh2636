@@ -364,6 +364,8 @@ code: install.packages(“moderndive”) in the console directly.</p>
 <p>Then I use the following code to load the early_january_weather
 dataset.</p>
 </div>
+<div id="problem-1" class="section level1">
+<h1>Problem 1</h1>
 <div id="variable---describe-the-dataset" class="section level2">
 <h2>Variable - describe the dataset:</h2>
 <ul>
@@ -385,6 +387,7 @@ dataset.</p>
 <p>#The number of row of this dataset:</p>
 <pre><code>## [1] 358</code></pre>
 </div>
+</div>
 <div id="mean-temperature" class="section level1">
 <h1>Mean temperature</h1>
 <pre><code>## [1] 39.58212</code></pre>
@@ -395,6 +398,43 @@ dataset.</p>
 <p>The pattern of this plot is swinging up and down like a wave. Also
 the humidity before Jan 07 is lower than the humidity after Jan 07.</p>
 <pre><code>## Saving 7 x 5 in image</code></pre>
+</div>
+<div id="problem-2" class="section level1">
+<h1>Problem 2</h1>
+<pre><code>## # A tibble: 10 × 4
+##    vec_char vec_numeric vec_logical vec_factor
+##    &lt;chr&gt;          &lt;dbl&gt; &lt;lgl&gt;       &lt;fct&gt;     
+##  1 My           -0.790  FALSE       excellent 
+##  2 name         -1.75   FALSE       fair      
+##  3 is           -0.0916 FALSE       bad       
+##  4 Gavin         1.62   TRUE        excellent 
+##  5 I             0.139  TRUE        fair      
+##  6 like          0.457  TRUE        bad       
+##  7 hiking       -0.466  FALSE       excellent 
+##  8 with          0.404  TRUE        fair      
+##  9 my            1.55   TRUE        bad       
+## 10 friends      -0.794  FALSE       excellent</code></pre>
+</div>
+<div id="random-sample-of-size-10s-mean" class="section level1">
+<h1>Random sample of size 10’s mean:</h1>
+<pre><code>## [1] NA</code></pre>
+<pre><code>## [1] 0.02733879</code></pre>
+<pre><code>## [1] 0.5</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>As we calculated the mean for these 4 variable, we found that the
+vec_numeric and vec_logic can have a mean, and other 2 variable does
+not. This is because the vec_logic in R, TRUE treat as 1 and FALSE treat
+as 0, so if the number is bigger than 0.5, which mean the data we
+collected have more TRUE than FALSE, vice versa. The other 2 variable is
+not numeric so they don’t have a mean.</p>
+<pre class="r"><code>print(as.numeric(example_df$vec_char))
+print(as.numeric(example_df$vec_logical))
+print(as.numeric(example_df$vec_factor))</code></pre>
+<p>From the result we can see that vec_char still can not have a numeric
+value, all the answer is NA, but for vec_logical we can have a numeric
+value and this is because R turn TRUE treat as 1 and FALSE treat as 0.
+For the vec_factor, it return integer codes corresponding to factor
+levels, which may not always be meaningful as numeric values.</p>
 </div>
 
 

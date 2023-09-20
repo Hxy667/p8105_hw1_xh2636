@@ -11,6 +11,7 @@ I download the a package containing the penguins dataset by copy the code: insta
 
 Then I use the following code to load the early_january_weather dataset.
 
+# Problem 1
 
 ```{r, echo=FALSE}
 library(moderndive)
@@ -68,5 +69,42 @@ The pattern of this plot is swinging up and down like a wave. Also the humidity 
 ggsave("scatter_plot.png")
 ```
 
+# Problem 2
 
+```{r, echo=FALSE}
+example_df = tibble(
+  vec_char = c("My","name","is","Gavin",
+               "I","like","hiking","with","my","friends"),
+  vec_numeric = rnorm(10),
+  vec_logical = vec_numeric > 0,
+  vec_factor = factor(c("excellent","fair","bad",
+                        "excellent","fair","bad",
+                        "excellent","fair","bad",
+                        "excellent"))
+)
+example_df
+```
 
+# Random sample of size 10's mean:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+k <- example_df %>% pull(vec_char) %>% mean
+z <- example_df %>% pull(vec_numeric) %>% mean
+p <- example_df %>% pull(vec_logical) %>% mean
+h <- example_df %>% pull(vec_factor) %>% mean
+print(k)
+print(z)
+print(p)
+print(h)
+```
+
+As we calculated the mean for these 4 variable, we found that the vec_numeric and vec_logic can have a mean, and other 2 variable does not. This is because the vec_logic in R, TRUE treat as 1 and FALSE treat as 0, so if the number is bigger than 0.5, which mean the data we collected have more TRUE than FALSE, vice versa. The other 2 variable is not numeric so they don't have a mean.
+
+```{r, warning=FALSE, results='hide'}
+print(as.numeric(example_df$vec_char))
+print(as.numeric(example_df$vec_logical))
+print(as.numeric(example_df$vec_factor))
+```
+
+From the result we can see that vec_char still can not have a numeric value, all the answer is NA, but for vec_logical we can have a numeric value and this is because R turn TRUE treat as 1 and FALSE treat as 0. For the vec_factor, it return integer codes corresponding to factor levels, which may not always be meaningful as numeric values.
