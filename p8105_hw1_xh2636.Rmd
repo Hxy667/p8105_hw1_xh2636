@@ -88,7 +88,6 @@ example_df
 # Random sample of size 10's mean:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
 k <- example_df %>% pull(vec_char) %>% mean
 z <- example_df %>% pull(vec_numeric) %>% mean
 p <- example_df %>% pull(vec_logical) %>% mean
