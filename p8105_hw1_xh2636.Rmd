@@ -107,3 +107,8 @@ print(as.numeric(example_df$vec_factor))
 ```
 
 From the result we can see that vec_char still can not have a numeric value, all the answer is NA, but for vec_logical we can have a numeric value and this is because R turn TRUE treat as 1 and FALSE treat as 0. For the vec_factor, it return integer codes corresponding to factor levels, which may not always be meaningful as numeric values.
+
+
+
+
+
